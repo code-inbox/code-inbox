@@ -1,0 +1,82 @@
+{
+  "name": "vscode_starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/node/extension.js",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "module": "dist",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run setup && node build.js",
+    "start": "npm run setup && node build.js --watch",
+    "open": "code --extensionDevelopmentPath=${PWD}",
+    "setup": "node dynamicContributes.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.3",
+    "@types/node": "^20.4.5",
+    "@types/react": "^18.2.18",
+    "@types/vscode": "^1.80.0",
+    "@types/vscode-webview": "^1.57.1",
+    "@vitejs/plugin-react": "^4.0.3",
+    "astring": "^1.8.6",
+    "dotenv": "^16.3.1",
+    "glob": "^10.3.3",
+    "vite": "^4.4.7"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "serve": "^14.2.0",
+    "svelte": "^4.1.1",
+    "watch": "^1.0.2",
+    "zustand": "^4.4.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "container",
+          "title": "Extension Starter",
+          "icon": "public/bell.svg"
+        }
+      ]
+    },
+    "views": {
+      "container": [
+        {
+          "id": "box",
+          "name": "box",
+          "type": "webview",
+          "initialSize": 4
+        },
+        {
+          "id": "box2",
+          "name": "box2",
+          "type": "webview",
+          "initialSize": 4
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vscode_starter.addTodo",
+        "title": "Add Todo"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "vscode_starter",
+      "properties": {}
+    },
+    "keybindings": []
+  }
+}
