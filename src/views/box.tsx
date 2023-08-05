@@ -2,6 +2,9 @@ import React from "react"
 import { useStore } from "zustand"
 import { getStore } from "../state"
 
+import styles from "./box.module.css"
+import globalStyles from "./global.module.css"
+
 const _store = getStore()
 
 export default function Box() {
@@ -9,14 +12,18 @@ export default function Box() {
 
   return (
     <div>
-      <h1>Box</h1>
+      <h1>CodeInbox</h1>
       <div>
-        <h3>TODOS</h3>
-        <ul>
-          {store.todos.map((todo) => (
-            <><li key={todo}>{todo}</li>
-            <button onClick={() => store.removeTodo(todo)}>Close</button>
-            </>
+        <ul
+          style={{
+            padding: "0.5rem",
+          }}
+          className={globalStyles.more}
+        >
+          {store.notifications.map((n) => (
+            <li key={n.id} className={styles.box}>
+              {n.title || "New notification"}
+            </li>
           ))}
         </ul>
       </div>
