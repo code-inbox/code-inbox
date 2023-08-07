@@ -79,11 +79,11 @@
           "type": "string",
           "description": "Your MagicBell user account API key (_not_ the secret key)."
         },
-        "CodeInbox.userHmac": {
+        "CodeInbox.magicBellUserHmac": {
           "type": "string",
           "description": "The HMAC key corresponding to your MagicbBell user account."
         },
-        "CodeInbox.apiUrl": {
+        "CodeInbox.magicBellApiUrl": {
           "type": "string",
           "description": "The MagicBell API URL (for testing)"
         }
