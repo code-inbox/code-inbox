@@ -1,7 +1,7 @@
 const path = require("path")
 const fs = require("fs")
 const { build } = require("vite")
-const { getFrameworkViews } = require("./getFrameworkViews")
+const { getFrameworkViews } = require("./getFrameworkViews.cjs")
 const { builtinModules } = require("module")
 
 require("dotenv").config()
@@ -75,6 +75,8 @@ const isWatch = process.argv.includes("--watch")
       .concat([
         build({
           build: {
+            minify: false,
+            target: "node14",
             lib: {
               formats: ["cjs"],
             },
