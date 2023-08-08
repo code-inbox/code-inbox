@@ -1,4 +1,5 @@
-import {StateCreator, StoreApi, UseBoundStore, create} from "zustand"
+import type {StateCreator, StoreApi} from "zustand/vanilla"
+import {createStore} from "zustand/vanilla"
 import * as vscode from "vscode"
 import {WebviewApi} from "vscode-webview"
 
@@ -12,7 +13,7 @@ type IpcImpl = <S extends {}>(
 
 // Aim is to have only 1 messenger:store per-process
 let messenger: BaseMessenger<unknown>;
-let store: UseBoundStore<StoreApi<any>>;
+let store: StoreApi<any>;
 
 const ipc: IpcImpl = (storeInitializer, newConnectionFromNode?: vscode.Webview) => {
     return (set, get, api) => {
@@ -138,13 +139,13 @@ export default function getStore<S extends {}>(initializer: StateCreator<S>) {
      * Returns a Zustand store for the current process, creating it if necessary
      * @param connection If running in Node, you can have a 1:many connection to webviews that will be synced with. This registers a new connection.
      */
-    return function (connection?: vscode.Webview): UseBoundStore<StoreApi<S>> {
+    return function (connection?: vscode.Webview): StoreApi<S> {
         if (store) {
             // run the middleware again to update messenger without creating a new store
             ipc(() => ({}), connection)(store.setState, store.getState, store)
             return store
         }
-        return store = create<S>(
+        return store = createStore<S>(
             ipc<S>(initializer)
         )
     }

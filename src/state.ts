@@ -1,4 +1,4 @@
-import {StoreApi, UseBoundStore} from "zustand"
+import type {StoreApi} from "zustand/vanilla"
 import _getStore from "../ipc"
 
 export type State = {
@@ -7,7 +7,7 @@ export type State = {
     addNotification: (notification: unknown) => void;
 }
 
-export type Store = UseBoundStore<StoreApi<State>>
+export type Store = StoreApi<State>
 
 export const getStore = _getStore<State>((set) => ({
     addNotification: (notification: unknown) => set((state) => ({notifications: [...state.notifications, notification]})),

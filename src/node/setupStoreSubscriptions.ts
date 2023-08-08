@@ -1,6 +1,5 @@
 import NotificationsManager from "../services/NotificationsManager"
 import {getStore} from "../state"
-import * as vscode from "vscode"
 
 // See https://vscode-docs.readthedocs.io/en/stable/customization/keybindings/
 
