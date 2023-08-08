@@ -1,6 +1,6 @@
 {
   "name": "codeinbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/node/extension.js",
   "engines": {
@@ -11,6 +11,7 @@
     "url": "https://github.com/code-inbox/code-inbox.git"
   },
   "publisher": "CodeInbox",
+  "icon": "public/ping-logo.png",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run setup && node build.js",
