@@ -1,38 +1,42 @@
-import MagicBell from "magicbell";
 import * as vscode from "vscode";
+import fetch from "node-fetch";
 
-import { Store } from "../state";
+import {Store} from "../state";
 
 const config = vscode.workspace.getConfiguration("CodeInbox");
 
 export default class NotificationsManager {
-  private store: Store;
-  private magicBell: MagicBell;
-  constructor(store: Store) {
-    const githubUsername = config.get("githubUsername") as string;
-    const magicBellApiKey = config.get("magicBellApiKey") as string;
-    const magicBellApiUrl =
-      config.get("magicBellApiUrl") || "https://api.magicbell.com";
-    if (!githubUsername || !magicBellApiKey) {
-      throw new Error(
-        "Missing configuration for CodeInbox extension. Please set your GitHub username and MagicBell API key in the settings."
-      );
+    private githubUsername: string;
+    private magicBellApiKey: string;
+    private magicBellApiUrl: string;
+    private store: Store;
+    constructor(store: Store) {
+        this.githubUsername = config.get("githubUsername") as string;
+        this.magicBellApiKey = config.get("magicBellApiKey") as string;
+        this.magicBellApiUrl =
+            config.get("magicBellApiUrl") || "https://api.magicbell.com";
+        if (!this.githubUsername || !this.magicBellApiKey) {
+            throw new Error(
+                "Missing configuration for CodeInbox extension. Please set your GitHub username and MagicBell API key in the settings."
+            );
+        }
+        this.store = store;
     }
-    this.store = store;
-    this.magicBell = new MagicBell({
-      apiKey: magicBellApiKey,
-      userExternalId: githubUsername,
-      host: magicBellApiUrl as string,
-    });
-  }
-  public async init() {
-    const { notifications } = await this.magicBell.notifications.list();
-    this.store.getState().setNotifications(notifications as any);
-    this.magicBell.listen().forEach(async (event) => {
-      const newNotification = await this.magicBell.notifications.get(
-        event.data.id
-      );
-      this.store.getState().addNotification(newNotification);
-    });
-  }
+
+    private async fetchNotifications() {
+        return fetch(
+            `${this.magicBellApiUrl}/notifications`,
+            {
+                headers: {
+                    'X-MAGICBELL-API-KEY': this.magicBellApiKey,
+                    'X-MAGICBELL-USER-EXTERNAL-ID': this.githubUsername,
+                },
+            }
+        ).then((res) => res.json()).then(res => res.notifications)
+    }
+
+    public async init() {
+        const notifications = await this.fetchNotifications();
+        this.store.getState().setNotifications(notifications as any);
+    }
 }
