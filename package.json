@@ -14,8 +14,8 @@
   "icon": "public/ping-logo.png",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run setup && node build.js",
-    "start": "npm run setup && node build.js --watch",
+    "build": "npm run setup && rollup -c rollup.config.mjs",
+    "start": "npm run setup && rollup -c rollup.config.mjs --watch",
     "open": "code --extensionDevelopmentPath=${PWD}",
     "setup": "node dynamicContributes.cjs"
   },
@@ -23,6 +23,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.3",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-replace": "^5.0.2",
     "@sveltejs/vite-plugin-svelte": "^2.4.3",
     "@types/node": "^20.4.5",
     "@types/react": "^18.2.18",
@@ -32,6 +36,8 @@
     "astring": "^1.8.6",
     "dotenv": "^16.3.1",
     "glob": "^10.3.3",
+    "rollup-plugin-esbuild": "^5.0.0",
+    "rollup-plugin-postcss": "^4.0.2",
     "vite": "^4.4.7"
   },
   "dependencies": {
