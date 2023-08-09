@@ -17,6 +17,7 @@ import {postBuildPlugin} from "./plugins"
 
 const standardPlugins = [
     replace({
+        preventAssignment: true,
         "process.env.NODE_ENV": JSON.stringify("production"),
     }),
     json(),
@@ -79,6 +80,7 @@ const config: RollupOptions[] = [
                 },
             }),
         ],
+        external: ["vscode"]
     },
 ]
 

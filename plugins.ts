@@ -1,5 +1,5 @@
 import {generate} from "astring"
-import {Plugin} from "rollup"
+import type {AcornNode, Plugin} from "rollup"
 
 interface PluginImpl extends Plugin {
     order?: "pre" | "post"
@@ -45,14 +45,14 @@ export function postBuildPlugin(options: {onComplete: (files: string[]) => void}
 export function getStaticInfoPlugin(): PluginImpl {
     return {
         name: "get-static-info",
-        moduleParsed({id, ...rest}) {
-            if (id.endsWith(".tsx")) {
+        moduleParsed({id, ast}) {
+            if (id.endsWith(".tsx") && ast) {
                 const componentName = id.slice(id.lastIndexOf("/") + 1, -4)
-                const exportNodes = rest.ast.body.filter(
-                    (n) => n.type === "ExportNamedDeclaration"
+                const exportNodes: AcornNode[] = (ast as any)?.body.filter(
+                    (n: AcornNode) => n.type === "ExportNamedDeclaration"
                 )
                 const source = exportNodes
-                    .map((n) => {
+                    .map((n: any) => {
                         const name = n.declaration.declarations[0].id.name
                         const definition = generate(n.declaration.declarations[0].init)
                         const cjsExport = `module.exports.${name} = ${definition};`
