@@ -14,10 +14,11 @@
   "icon": "public/ping-logo.png",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run setup && rollup -c rollup.config.mjs",
-    "start": "npm run setup && rollup -c rollup.config.mjs --watch",
+    "build": "rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "start": "rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript --watch",
     "open": "code --extensionDevelopmentPath=${PWD}",
-    "setup": "node dynamicContributes.cjs"
+    "prebuild": "node dynamicContributes.cjs",
+    "prestart": "node dynamicContributes.cjs"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +28,7 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-typescript": "^11.1.2",
     "@sveltejs/vite-plugin-svelte": "^2.4.3",
     "@types/node": "^20.4.5",
     "@types/react": "^18.2.18",
@@ -38,6 +40,7 @@
     "glob": "^10.3.3",
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-postcss": "^4.0.2",
+    "tslib": "^2.6.1",
     "vite": "^4.4.7"
   },
   "dependencies": {
