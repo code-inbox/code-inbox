@@ -17,8 +17,8 @@
     "build": "rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "start": "rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript --watch",
     "open": "code --extensionDevelopmentPath=${PWD}",
-    "prebuild": "node dynamicContributes.js",
-    "prestart": "node dynamicContributes.js"
+    "prebuild": "ts-node dynamicContributes.ts",
+    "prestart": "ts-node dynamicContributes.ts"
   },
   "keywords": [],
   "author": "",
@@ -40,6 +40,7 @@
     "glob": "^10.3.3",
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-postcss": "^4.0.2",
+    "ts-node": "^10.9.1",
     "tslib": "^2.6.1",
     "vite": "^4.4.7"
   },
