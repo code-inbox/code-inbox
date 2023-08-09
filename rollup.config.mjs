@@ -7,6 +7,7 @@ import postcss from "rollup-plugin-postcss"
 import {glob} from 'glob';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import child_process from "node:child_process"
 
 import {generate} from "astring"
 
@@ -26,6 +27,24 @@ const root = createRoot(document.getElementById('root'));
 root.render(<Component />);`
       }
       return code
+    },
+  }
+}
+
+function postBuildPlugin(options) {
+  return {
+    name: "post-build-plugin",
+    writeBundle(_, bundle) {
+      // Check if Rollup is in watch mode
+      if (this.meta.watchMode) {
+        // Get an array of output file names
+        const outputFiles = Object.keys(bundle)
+
+        // Execute arbitrary code here
+        if (options && options.onComplete) {
+          options.onComplete(outputFiles)
+        }
+      }
     },
   }
 }
@@ -106,6 +125,11 @@ export default [
       }),
       commonjs(),
       esbuild(),
+      postBuildPlugin({
+        onComplete: (outputFiles) => {
+            child_process.execSync("code --extensionDevelopmentPath=${PWD}")
+        }
+      })
     ],
   },
 ]
