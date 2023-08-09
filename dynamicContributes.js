@@ -1,6 +1,5 @@
-const path = require("path")
 const fs = require("fs")
-
+const path = require("path")
 require("dotenv").config()
 
 const getRootPath = () => {
@@ -15,7 +14,7 @@ const getRootPath = () => {
     return currentPath
 }
 
-module.exports.getFrameworkViews = function getFrameworkViews() {
+function getFrameworkViews() {
     const framework = process.env.FRAMEWORK || "react"
     const mapToExtension = {
       react: "?sx",
@@ -36,3 +35,20 @@ module.exports.getFrameworkViews = function getFrameworkViews() {
       .map((file) => ({ name: file.split(".")[0], path: path.resolve(folderPath, file) }))
 
 }
+
+const saveFile = fs.writeFileSync
+
+const viewsPaths = getFrameworkViews()
+const json = require(path.resolve("package.json"))
+json.contributes.views.container = []
+
+viewsPaths.forEach(({ name: viewPath }) => {
+  const viewName = viewPath.split(".")[0]
+  json.contributes.views.container.push({
+    id: viewName,
+    name: viewName,
+    type: "webview",
+    initialSize: 4,
+  })
+  saveFile(path.resolve("package.json"), JSON.stringify(json, null, 2))
+})

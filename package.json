@@ -17,8 +17,8 @@
     "build": "rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "start": "rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript --watch",
     "open": "code --extensionDevelopmentPath=${PWD}",
-    "prebuild": "node dynamicContributes.cjs",
-    "prestart": "node dynamicContributes.cjs"
+    "prebuild": "node dynamicContributes.js",
+    "prestart": "node dynamicContributes.js"
   },
   "keywords": [],
   "author": "",
