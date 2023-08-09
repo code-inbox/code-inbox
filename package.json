@@ -16,9 +16,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "start": "rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript --watch",
-    "open": "code --extensionDevelopmentPath=${PWD}",
-    "prebuild": "ts-node dynamicContributes.ts",
-    "prestart": "ts-node dynamicContributes.ts"
+    "prebuild": "ts-node contributes.ts",
+    "prestart": "ts-node contributes.ts",
+    "open": "code --extensionDevelopmentPath=${PWD}"
   },
   "keywords": [],
   "author": "",

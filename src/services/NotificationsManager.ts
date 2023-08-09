@@ -29,10 +29,12 @@ export default class NotificationsManager {
         const {notifications} = await this.magicBell.notifications.list();
         this.store.getState().setNotifications(notifications as any);
         this.magicBell.listen().forEach(async (event) => {
-            const newNotification = await this.magicBell.notifications.get(
-                event.data.id
-            );
-            this.store.getState().addNotification(newNotification);
+            if ("id" in event.data) {
+                const newNotification = await this.magicBell.notifications.get(
+                    event.data.id
+                );
+                this.store.getState().addNotification(newNotification);
+            }
         });
     }
 }
