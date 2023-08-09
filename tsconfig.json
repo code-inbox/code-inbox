@@ -105,7 +105,7 @@
         // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
         "skipLibCheck": true /* Skip type checking all .d.ts files. */
     },
-    "include": ["globals.d.ts", "rollup.config.ts", "dynamicContributes.ts"],
+    "include": ["globals.d.ts", "rollup.config.ts", "contributes.ts"],
     "ts-node": {
         "files": true
     },
