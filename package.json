@@ -18,7 +18,8 @@
     "start": "rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript --watch",
     "prebuild": "ts-node contributes.ts",
     "prestart": "ts-node contributes.ts",
-    "open": "code --extensionDevelopmentPath=${PWD}"
+    "open": "code --extensionDevelopmentPath=${PWD}",
+    "publish": "vsce publish"
   },
   "keywords": [],
   "author": "",
@@ -41,8 +42,7 @@
     "rollup-plugin-esbuild": "^5.0.0",
     "rollup-plugin-postcss": "^4.0.2",
     "ts-node": "^10.9.1",
-    "tslib": "^2.6.1",
-    "vite": "^4.4.7"
+    "tslib": "^2.6.1"
   },
   "dependencies": {
     "magicbell": "^1.7.1",

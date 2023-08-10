@@ -27,7 +27,9 @@ export default class NotificationsManager {
     }
     public async init() {
         const {notifications} = await this.magicBell.notifications.list();
-        this.store.getState().setNotifications(notifications as any);
+        if (notifications) {
+            this.store.getState().setNotifications(notifications);
+        }
         this.magicBell.listen().forEach(async (event) => {
             if ("id" in event.data) {
                 const newNotification = await this.magicBell.notifications.get(
