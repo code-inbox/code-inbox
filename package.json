@@ -1,6 +1,6 @@
 {
   "name": "codeinbox",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "dist/node/extension.js",
   "engines": {
@@ -20,7 +20,8 @@
     "prestart": "ts-node contributes.ts",
     "open": "code --extensionDevelopmentPath=${PWD}",
     "package": "vsce package --no-dependencies",
-    "publish": "vsce publish --no-dependencies"
+    "publish": "vsce publish --no-dependencies",
+    "bump-patch": "npm --no-git-tag-version version patch"
   },
   "keywords": [],
   "author": "",

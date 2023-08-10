@@ -13,7 +13,7 @@ export type State = {
 export type Store = StoreApi<State>
 
 export const getStore = _getStore<State>((set) => ({
-    addNotification: (notification: Notification) => set((state) => ({notifications: [...state.notifications, notification]})),
+    addNotification: (notification: Notification) => set((state) => ({notifications: [notification, ...state.notifications]})),
     setNotifications: (notifications: Notification[]) => set({notifications}),
     notifications: []
 }))
