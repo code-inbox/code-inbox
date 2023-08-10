@@ -51,7 +51,6 @@
     "react-dom": "^18.2.0",
     "serve": "^14.2.0",
     "svelte": "^4.1.1",
-    "watch": "^1.0.2",
     "zustand": "^4.4.0"
   },
   "activationEvents": [
