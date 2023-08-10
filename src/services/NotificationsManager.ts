@@ -1,42 +1,42 @@
+import MagicBell from "magicbell";
 import * as vscode from "vscode";
-import fetch from "node-fetch";
 
 import {Store} from "../state";
 
 const config = vscode.workspace.getConfiguration("CodeInbox");
 
 export default class NotificationsManager {
-    private githubUsername: string;
-    private magicBellApiKey: string;
-    private magicBellApiUrl: string;
     private store: Store;
+    private magicBell: MagicBell;
     constructor(store: Store) {
-        this.githubUsername = config.get("githubUsername") as string;
-        this.magicBellApiKey = config.get("magicBellApiKey") as string;
-        this.magicBellApiUrl =
+        const githubUsername = config.get("githubUsername") as string;
+        const magicBellApiKey = config.get("magicBellApiKey") as string;
+        const magicBellApiUrl =
             config.get("magicBellApiUrl") || "https://api.magicbell.com";
-        if (!this.githubUsername || !this.magicBellApiKey) {
+        if (!githubUsername || !magicBellApiKey) {
             throw new Error(
                 "Missing configuration for CodeInbox extension. Please set your GitHub username and MagicBell API key in the settings."
             );
         }
         this.store = store;
+        this.magicBell = new MagicBell({
+            apiKey: magicBellApiKey,
+            userExternalId: githubUsername,
+            host: magicBellApiUrl as string,
+        });
     }
-
-    private async fetchNotifications() {
-        return fetch(
-            `${this.magicBellApiUrl}/notifications`,
-            {
-                headers: {
-                    'X-MAGICBELL-API-KEY': this.magicBellApiKey,
-                    'X-MAGICBELL-USER-EXTERNAL-ID': this.githubUsername,
-                },
-            }
-        ).then((res) => res.json()).then(res => res.notifications)
-    }
-
     public async init() {
-        const notifications = await this.fetchNotifications();
-        this.store.getState().setNotifications(notifications as any);
+        const {notifications} = await this.magicBell.notifications.list();
+        if (notifications) {
+            this.store.getState().setNotifications(notifications);
+        }
+        this.magicBell.listen().forEach(async (event) => {
+            if ("id" in event.data) {
+                const newNotification = await this.magicBell.notifications.get(
+                    event.data.id
+                );
+                this.store.getState().addNotification(newNotification);
+            }
+        });
     }
 }

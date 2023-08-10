@@ -3,7 +3,6 @@ import fs from "fs"
 import path from "path"
 import {Store, getStore} from "./src/state"
 import setupStoreSubscriptions from "./src/node/setupStoreSubscriptions"
-import {getFrameworkViews} from "./getFrameworkViews.cjs"
 
 class ViewProvider implements vscode.WebviewViewProvider {
     public readonly viewId: string
