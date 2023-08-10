@@ -15,6 +15,9 @@ import reactConfig from "./frameworks/react"
 import svelteConfig from "./frameworks/svelte"
 import {postBuildPlugin} from "./plugins"
 
+import dotenv from "dotenv"
+dotenv.config()
+
 const standardPlugins = [
     replace({
         preventAssignment: true,

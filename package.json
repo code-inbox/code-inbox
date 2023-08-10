@@ -1,6 +1,6 @@
 {
   "name": "codeinbox",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/node/extension.js",
   "engines": {
@@ -19,7 +19,8 @@
     "prebuild": "ts-node contributes.ts",
     "prestart": "ts-node contributes.ts",
     "open": "code --extensionDevelopmentPath=${PWD}",
-    "publish": "vsce publish"
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
   },
   "keywords": [],
   "author": "",
