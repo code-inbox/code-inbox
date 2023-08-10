@@ -79,7 +79,7 @@ type ConnectionFromChromium = WebviewApi<unknown>
 type ConnectionFromNode = vscode.Webview
 
 abstract class BaseMessenger<S> {
-    public type: string
+    public abstract type: string
     public listen(fn: (message: any) => void) { }
     public post(message: any) { }
 }
@@ -87,7 +87,7 @@ abstract class BaseMessenger<S> {
 class NodeMessenger<S> implements BaseMessenger<S> {
     public type = "node"
     public connections: ConnectionFromNode[] = []
-    private disposeListeners: () => void
+    private disposeListeners?: () => void
     listen(fn: (message: S | {type: "request"}) => void) {
         if (this.disposeListeners) {
             this.disposeListeners()
