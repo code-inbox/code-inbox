@@ -1,7 +1,25 @@
 .box {
-    background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    border: 1px solid #626262;
+    padding: 0px 20px;
     margin-bottom: 20px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.box > div {
+    padding: 10px 0px;
+}
+
+.box > div:last-child {
+    padding-bottom: 10px;
+}
+
+.header {
+    text-align: right;
+    border-bottom: 1px solid #626262;
+    font-size: 0.7rem;
+    opacity: 0.7;
 }
