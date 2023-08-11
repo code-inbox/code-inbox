@@ -1,11 +1,11 @@
 import React from "react"
 import { useStore } from "zustand"
-import { getStore } from "../state"
+import { getChromiumStore } from "../state"
 
 import styles from "./box.module.css"
 import globalStyles from "./global.module.css"
 
-const _store = getStore()
+const [_store, vscode] = getChromiumStore()
 
 export default function Box() {
   const store = useStore(_store)

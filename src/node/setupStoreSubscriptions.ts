@@ -1,10 +1,11 @@
 import NotificationsManager from "../services/NotificationsManager"
-import {getStore} from "../state"
+import {getNodeStore} from "../state"
 
 // See https://vscode-docs.readthedocs.io/en/stable/customization/keybindings/
 
+const [store] = getNodeStore()
+
 export default function () {
-    const store = getStore()
     store.subscribe(state => {
         // handle store subscriptions here
     })
