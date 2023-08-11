@@ -26,9 +26,6 @@ export default function Box() {
             </li>
           ))}
         </ul>
-        <button onClick={() => {
-            vscode("window.showInformationMessage", ["It works!"])
-        }}>Test</button>
       </div>
     </div>
   )
