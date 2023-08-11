@@ -33,6 +33,7 @@
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-typescript": "^11.1.2",
     "@sveltejs/vite-plugin-svelte": "^2.4.3",
+    "@types/lodash.pick": "^4.4.7",
     "@types/node": "^20.4.5",
     "@types/react": "^18.2.18",
     "@types/vscode": "^1.74.0",
@@ -47,6 +48,7 @@
     "tslib": "^2.6.1"
   },
   "dependencies": {
+    "lodash.pick": "^4.4.0",
     "magicbell": "^1.7.1",
     "node-fetch": "^3.3.2",
     "react": "^18.2.0",
