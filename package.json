@@ -1,6 +1,6 @@
 {
   "name": "codeinbox",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "dist/node/extension.js",
   "engines": {
@@ -103,6 +103,12 @@
         }
       }
     },
-    "keybindings": []
+    "keybindings": [
+      {
+        "command": "box.focus",
+        "key": "ctrl+g",
+        "mac": "cmd+g"
+      }
+    ]
   }
 }
