@@ -1,11 +1,13 @@
 import React from "react"
 import { useStore } from "zustand"
-import { getChromiumStore } from "../state"
+import { getChromiumStore } from "vscode-scripts"
+
+import {State} from "../state"
 
 import styles from "./box.module.css"
 import globalStyles from "./global.module.css"
 
-const [_store, vscode] = getChromiumStore()
+const [_store, vscode] = getChromiumStore<State>()
 
 export default function Box() {
   const store = useStore(_store)
@@ -26,7 +28,7 @@ export default function Box() {
             return (
               <li key={n.id} className={styles.box}>
                 <div className={styles.header}>{sent_at?.toLocaleString()}</div>
-                <div>{n.title || "New notification"}</div>
+                <div>{n.title}</div>
               </li>
             )
           })}

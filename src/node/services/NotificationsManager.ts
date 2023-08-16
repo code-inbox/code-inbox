@@ -1,7 +1,7 @@
-import MagicBell from "magicbell";
 import * as vscode from "vscode";
+import MagicBell from "magicbell";
 
-import {Store} from "../state";
+import {Store} from "../../state";
 
 const config = vscode.workspace.getConfiguration("CodeInbox");
 
