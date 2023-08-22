@@ -1,66 +1,66 @@
+# CodeInbox &mdash; Streamline Your Development Workflow
 
-<img width="899" alt="codeinbox readme dark" src="https://github.com/code-inbox/vscode-webview-starter/assets/11192814/12cee044-6b38-449d-a575-15d719739409">
+> Minimize distractions and context-switching for developers by seamlessly incorporating information from your CI (Continuous Integration) pipeline and GitHub actions statuses. Stay focused, collaborate efficiently, and take control of your development tasks right within VS Code.
 
-# VSCode Webview Starter Template
+[CodeInbox](https://github.com/code-inbox/code-inbox "Open CodeInbox on GitHub") is a powerful open-source extension for [Visual Studio Code](https://code.visualstudio.com) designed to enhance your development experience by integrating GitHub actions and CI information directly into your coding environment.
 
-This is a starter template for creating a VSCode extension with one or more webviews to be rendered in a sidebar (In VSCode parlance, it creates a dedicated `viewContainer` in the `Activity Bar` with one or more `views`).
+CodeInbox empowers developers to stay in the flow, eliminating the need for constant context-switching between coding and checking CI statuses. With the ability to display notifications, manage pull requests, and more &mdash; all from within VS Code &mdash; you can keep your focus on writing code and collaborating with your team.
 
+## Getting Started
 
+Install CodeInbox by clicking `Install` on the banner above, or from the Extensions sidebar in VS Code, by searching for CodeInbox.
 
-https://github.com/code-inbox/vscode-webview-starter/assets/11192814/c44df936-f87b-44a3-a1a9-9c53bf6d2ce4
+## Features
 
+CodeInbox is designed to simplify your development workflow and provide a more seamless experience within VS Code.
 
+- [**GitHub Actions Integration**](#github-actions-integration) &mdash; Display real-time CI pipeline statuses and notifications right within your coding environment.
+- [**Pull Request Management**](#pull-request-management) &mdash; Manage, open, close, and track pull requests without leaving VS Code.
+- [**Minimize Context-Switching**](#minimize-context-switching) &mdash; Keep your focus on coding by eliminating the need to constantly check external tools for CI updates.
 
-## Getting started
+### GitHub Actions Integration
 
-The build scripts assume you are running Node 16 or later.
+Stay up to date with the status of your CI pipeline by seamlessly integrating GitHub Actions information directly into VS Code. CodeInbox displays real-time notifications for your CI builds, allowing you to react promptly to any issues.
 
-1. Clone this repository
-2. Run `npm install`
-3. Run `npm start`. This will compile the extension and open a new VSCode window with the extension loaded.
+<figure align="center">
+  <img src="https://avatars.githubusercontent.com/u/44036562?s=200&v=4" alt="GitHub Actions Integration" />
+</figure>
 
-## Specifying framework
+### Pull Request Management
 
-By default, this template is configured to use React as the framework for the webviews. Depending on the framework you wish to use, you can change the `FRAMEWORK` variable in the `.env` file to one of the following:
+Efficiently manage pull requests without leaving your coding environment. With CodeInbox, you can view, open, close, and track pull requests, all from within VS Code. Collaborate with your team and stay informed without disrupting your workflow.
 
-- `react`
-- `svelte`
-- (more coming soon)
+<figure align="center">
+  <svg xmlns="http://www.w3.org/2000/svg" width="200" height="" viewBox="0 0 512 512"><script xmlns=""/><title>ionicons-v5-d</title><circle cx="128" cy="96" r="48" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><circle cx="256" cy="416" r="48" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><line x1="256" y1="256" x2="256" y2="368" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><circle cx="384" cy="96" r="48" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M128,144c0,74.67,68.92,112,128,112" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M384,144c0,74.67-68.92,112-128,112" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>
+</figure>
 
-## Adding a new webview
+### Minimize Context-Switching
 
-Each "webview" is a collapsible pane that appears in your view container. Each webview runs in a separate iframe. It can contain any HTML content you wish.
+CodeInbox is all about streamlining your development process. By bringing CI pipeline statuses and pull request management into VS Code, you can minimize context-switching and keep your concentration on writing code. Say goodbye to constant tab switching and distractions.
 
-All that is required is to create a new file in the `src/views` directory. Each entry in this directory that has a file extension appropriate to the current `FRAMEWORK` will be compiled into a separate webview.
+## Roadmap
 
-For example, if you are using React, you can create a new file called `src/views/my-view.tsx` and it will be compiled into a webview. If you are using Svelte, you can create a new file called `src/views/my-view.svelte` and it will be compiled into a webview.
+While CodeInbox currently focuses on displaying CI notifications, we have big plans for its future. In the pipeline, you can expect features like:
 
-## State management
+- Opening and managing pull requests
+- Tracking the progress of your pull requests
+- Customizing notifications and alerts
+- Integrating with other CI/CD platforms
 
-State management for webview extensions can be tricky, because there can be multiple processes running. For example, if you have two webviews, you will have a total of three processes running:
+Stay tuned for updates and improvements as we continue to enhance your development experience.
 
-- The main VSCode process (Node)
-- The webview process for the first webview (Chromium)
-- The webview process for the second webview (Chromium)
+## Contributing
 
-This template uses [Zustand](https://github.com/pmndrs/zustand) for state management. You can define your state along with its update functions in `src/state.ts`, and a custom middleware will ensure that the state is kept in sync across all processes.
+CodeInbox is an open-source project that welcomes contributions from the community. Whether it's code, documentation, or feedback, your involvement is greatly appreciated.
 
-## Commands
+## Support and Feedback
 
-### Defining commands
+For any questions, issues, or feedback, feel free to reach out on the [GitHub Issues](https://github.com/your-username/codeinbox/issues) page. We're here to help and improve CodeInbox based on your needs.
 
-An easy way to create custom commands is by simply exporting a `commands` object from your webview file. For example:
+## License
 
-```ts
-// src/views/my-view.tsx
+CodeInbox is released under the [MIT License](https://opensource.org/licenses/MIT), granting you the freedom to use and modify the code according to the terms of the license.
 
-export const commands = {
-  "my-extension.my-command": (store) => {
-    // Do something
-  },
-}
-```
+---
 
-### Calling commands
-
-Your users can call commands directly from the command palette, or you can call them programmatically from your main `node` process. A good place to call commands programmatically in response to state changes is in `src/node/setupStoreSubscriptions.ts`. See the default code for an example.
+We're excited to have you join the CodeInbox community and make development even more productive and enjoyable. Let's simplify the way developers work together!
