@@ -46,7 +46,7 @@
         {
           "id": "container",
           "title": "Extension Starter",
-          "icon": "public/bell.svg"
+          "icon": "public/sidebar-icon.png"
         }
       ]
     },
