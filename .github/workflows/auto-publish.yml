@@ -16,7 +16,6 @@ jobs:
         uses: "phips28/gh-action-bump-version@master"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PACKAGEJSON_DIR: "packages/vscode-scripts"
         with:
           version-type: "patch"
           tag-prefix: "v"
