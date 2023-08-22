@@ -11,7 +11,7 @@
     "url": "https://github.com/code-inbox/code-inbox.git"
   },
   "publisher": "CodeInbox",
-  "icon": "public/ping-logo.png",
+  "icon": "public/logo.png",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vscode-scripts build",
