@@ -30,10 +30,6 @@ Stay up to date with the status of your CI pipeline by seamlessly integrating Gi
 
 Efficiently manage pull requests without leaving your coding environment. With CodeInbox, you can view, open, close, and track pull requests, all from within VS Code. Collaborate with your team and stay informed without disrupting your workflow.
 
-<figure align="center">
-  <svg xmlns="http://www.w3.org/2000/svg" width="200" height="" viewBox="0 0 512 512"><script xmlns=""/><title>ionicons-v5-d</title><circle cx="128" cy="96" r="48" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><circle cx="256" cy="416" r="48" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><line x1="256" y1="256" x2="256" y2="368" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><circle cx="384" cy="96" r="48" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M128,144c0,74.67,68.92,112,128,112" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M384,144c0,74.67-68.92,112-128,112" style="fill:none;stroke:#2188ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>
-</figure>
-
 ### Minimize Context-Switching
 
 CodeInbox is all about streamlining your development process. By bringing CI pipeline statuses and pull request management into VS Code, you can minimize context-switching and keep your concentration on writing code. Say goodbye to constant tab switching and distractions.
