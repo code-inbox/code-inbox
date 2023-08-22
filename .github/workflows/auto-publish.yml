@@ -23,4 +23,4 @@ jobs:
         with:
           args: "publish -p $VSCE_TOKEN --no-dependencies"
         env:
-          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+          VSCE_TOKEN: ${{ secrets.VSCE_PAT }}
