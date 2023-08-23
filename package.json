@@ -20,7 +20,8 @@
     "open": "code --extensionDevelopmentPath=${PWD}",
     "package": "vsce package --no-dependencies",
     "publish": "vsce publish --no-dependencies",
-    "bump-patch": "npm --no-git-tag-version version patch"
+    "code-server-up": "vscode-scripts code-server-up",
+    "code-server-down": "vscode-scripts code-server-down"
   },
   "keywords": [],
   "author": "",
@@ -30,7 +31,7 @@
     "@types/react": "^18.2.18",
     "@types/vscode": "^1.74.0",
     "@types/vscode-webview": "^1.57.1",
-    "vscode-scripts": "^1.0.5"
+    "vscode-scripts": "^1.0.7"
   },
   "dependencies": {
     "magicbell": "^1.7.1",
