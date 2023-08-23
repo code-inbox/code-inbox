@@ -45,7 +45,7 @@
       "activitybar": [
         {
           "id": "container",
-          "title": "Extension Starter",
+          "title": "CodeInbox",
           "icon": "public/sidebar-icon.png"
         }
       ]
@@ -53,8 +53,8 @@
     "views": {
       "container": [
         {
-          "id": "box",
-          "name": "box",
+          "id": "inbox",
+          "name": "inbox",
           "type": "webview",
           "initialSize": 4
         }
