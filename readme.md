@@ -1,4 +1,4 @@
-# CodeInbox &mdash; Streamline Your Development Workflow
+# CodeInbox &mdash; Stay in the zone, not in the dark.
 
 > Minimize distractions and context-switching for developers by seamlessly incorporating information from your CI (Continuous Integration) pipeline and GitHub actions statuses. Stay focused, collaborate efficiently, and take control of your development tasks right within VS Code.
 
