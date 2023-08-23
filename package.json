@@ -1,7 +1,7 @@
 {
   "name": "codeinbox",
   "displayName": "CodeInbox - Stay in the zone, not in the dark",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "View real-time updates from GitHub, Datadog, and cloud deployments to VSCode for a more productive workflow.",
   "main": "dist/node/extension.js",
   "engines": {
