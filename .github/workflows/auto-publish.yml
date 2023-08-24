@@ -24,9 +24,8 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: './node_modules/.bin/vsce publish -p $VSCE_TOKEN --no-dependencies'
+          publish: './node_modules/.bin/vsce publish -p ${{ secrets.VSCE_PAT }} --no-dependencies'
           commit: 'chore: version packages'
           title: 'chore: version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VSCE_TOKEN: ${{ secrets.VSCE_PAT }}
