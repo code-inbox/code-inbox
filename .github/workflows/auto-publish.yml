@@ -2,7 +2,6 @@ on:
   push:
     branches:
       - main
-      - feature/changeset
 
 name: Deploy Extension
 jobs:
@@ -25,7 +24,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: 'npx vsce publish -p $VSCE_TOKEN --no-dependencies'
+          publish: './node_modules/.bin/vsce publish -p $VSCE_TOKEN --no-dependencies'
           commit: 'chore: version packages'
           title: 'chore: version packages'
         env:
